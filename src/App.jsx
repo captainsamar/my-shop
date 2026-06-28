@@ -2,8 +2,8 @@ import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import * as XLSX from "xlsx";
 
 // ── Supabase ──────────────────────────────────────────────────
-const SB_URL = "";  // Set in Vercel env: VITE_SUPABASE_URL
-const SB_KEY = "";  // Set in Vercel: VITE_SUPABASE_ANON_KEY
+const SB_URL = import.meta.env?.VITE_SUPABASE_URL || "";
+const SB_KEY = import.meta.env?.VITE_SUPABASE_ANON_KEY || "";
 
 const sb = async (method, table, body=null, qs="") => {
   const url = `${SB_URL}/rest/v1/${table}${qs?"?"+qs:""}`;
